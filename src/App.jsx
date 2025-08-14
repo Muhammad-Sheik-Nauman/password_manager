@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar'
-import './App.css'
-import Manager from './components/Manager'
+import './App.css' //hi
+import Manager from './components/Manager' 
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <Manager/>
+      <Manager/> 
       
     </>
   )
