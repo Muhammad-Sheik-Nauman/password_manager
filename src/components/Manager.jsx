@@ -54,28 +54,7 @@ const Manager = () => {
                 </div>
                 <div className="passwords">
                     <h2>your passwords</h2>
-                    <table className="table-auto w-full">
-                        <thead>
-                            <tr>
-                                <th className="px-4 py-2">Website</th>
-                                <th className="px-4 py-2">Username</th>
-                                <th className="px-4 py-2">Password</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {password.length === 0 ? (
-                                <tr><td colSpan="3" className="text-center">No passwords saved.</td></tr>
-                            ) : (
-                                password.map((item, idx) => (
-                                    <tr key={idx}>
-                                        <td className="border px-4 py-2">{item.site}</td>
-                                        <td className="border px-4 py-2">{item.username}</td>
-                                        <td className="border px-4 py-2">{item.password}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tbody>
-                    </table>
+                    
                 </div>
             </div>
         </>
