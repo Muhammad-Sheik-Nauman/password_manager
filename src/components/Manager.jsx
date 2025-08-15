@@ -54,6 +54,7 @@ const Manager = () => {
                 </div>
                 <div className="passwords">
                     <h2>your passwords</h2>
+                    <p>all your password are safe</p>
                     
                 </div>
             </div>
