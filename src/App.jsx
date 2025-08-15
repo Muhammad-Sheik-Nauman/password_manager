@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Navbar from './components/Navbar'
 import './App.css' 
 import Manager from './components/Manager' 
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +10,9 @@ function App() {
   return (
     <>
       <Navbar/>
-      <Manager/> 
+      <div className='min-h-[79vh]'><Manager/></div>
+      
+      <Footer /> 
       
     </>
   )
