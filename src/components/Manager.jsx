@@ -57,6 +57,10 @@ const Manager = () => {
                         <button className='bg-green-500 text-white rounded-full mt-3 px-4 w-35 hover:bg-green-600 cursor-pointer' onClick={savePassword}>add password</button>
                     </div>
                 </div>
+                <div className="passwords">
+                    <h2>your passwords</h2>
+                    <table></table>
+                </div>
             </div>
         </>
     )
