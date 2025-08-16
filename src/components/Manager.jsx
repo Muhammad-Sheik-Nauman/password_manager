@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState, useRef } from 'react' 
+import { v4 as uuidv4 } from 'uuid';
 
 const Manager = () => {
     const passwordRef = useRef()
@@ -12,10 +13,28 @@ const Manager = () => {
     }
     const savePassword = () => {
 
-        setpasswordArray([...password, form]);
-        localStorage.setItem("passwords", JSON.stringify([...password, form]))
+        setpasswordArray([...password, {...form,id:uuidv4()}]);
+        localStorage.setItem("passwords", JSON.stringify([...password, {...form,id:uuidv4()}]))
         console.log([...password, form]);
+        setForm({ site: '', username: '', password: '' });
+        alert("password saved successfully")
     }
+    const deletePassword = (id) => {
+        console.log("deleting password with id:", id);
+    let confirm = window.confirm("Are you sure you want to delete this password?");
+    if (confirm) {
+        setpasswordArray(password.filter(item => item.id !== id));
+        localStorage.setItem("passwords", JSON.stringify(password.filter(item => item.id !== id)));
+    }
+
+
+    }
+    const editPassword = (id) => {
+        console.log("editing password with id:", id);
+       setForm(password.filter(item => item.id === id)[0]);
+       setpasswordArray(password.filter(item => item.id !== id));
+    }
+
     const [password, setpasswordArray] = useState([])
     useEffect(() => {
         let passwords = localStorage.getItem('passwords');
@@ -35,7 +54,8 @@ const Manager = () => {
     return (
         <>
             <div className="absolute inset-0 -z-10 h-screen w-full bg-green-100 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
-            <div className=" mx-auto bg-slate-450 mycontainer shadow-lg w-180 h-50">
+           
+            <div className=" mx-auto bg-slate-450 md:mycontainer shadow-lg w-180 h-50">
                 <div className='text-black flex flex-col p-4 justify-between'>
                     <h1 className='text-center'><span className='text-green-500 font-bold text-3xl '>&lt;PassOP&gt;</span></h1>
                     <p className='text-center'>your own password manager</p>
@@ -88,8 +108,7 @@ const Manager = () => {
                                         <td className='text-center'>{item.password}</td>
                                         <td className='text-center'>
                                             <span className="flex items-center justify-center gap-2">
-                                                <button
-                                                    
+                                            <button onClick={() => editPassword(item.id)}
                                                     className="material-symbols-outlined text-black-600 hover:text-blue-800 align-middle"
                                                     style={{
                                                         fontSize: "20px", 
@@ -101,7 +120,7 @@ const Manager = () => {
                                                     edit
                                                 </button>
 
-                                                <button title="Delete" className="material-symbols-outlined text-red-600 hover:text-red-800 align-middle" style={{ fontSize: "20px", background: "none", border: "none", cursor: "pointer" }}>
+                                                <button onClick={() => deletePassword(item.id)} title="Delete" className="material-symbols-outlined text-red-600 hover:text-red-800 align-middle" style={{ fontSize: "20px", background: "none", border: "none", cursor: "pointer" }}>
                                                     delete
                                                 </button>
                                             </span>
