@@ -3,7 +3,7 @@ import { useState, useRef } from 'react'
 
 const Manager = () => {
     const passwordRef = useRef()
-    const [showPwd, setShowPwd] = useState(false);
+    const [showPwd, setShowPwd] = useState(false); 
     const showPassword = () => {
         setShowPwd((prev) => !prev);
         if (passwordRef.current) {
