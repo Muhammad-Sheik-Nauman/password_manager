@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Manager = () => {
     const passwordRef = useRef()
-    const [showPwd, setShowPwd] = useState(false);
+    const [showPwd, setShowPwd] = useState(false); 
     const showPassword = () => {
         setShowPwd((prev) => !prev);
         if (passwordRef.current) {

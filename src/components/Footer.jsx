@@ -6,7 +6,7 @@ const Footer = () => {
       <span>© 2025 Password Manager. All rights reserved.</span>
     </footer>
 
-  )
+  ) 
 }
 
 export default Footer
