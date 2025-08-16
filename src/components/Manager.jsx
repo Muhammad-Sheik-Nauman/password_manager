@@ -10,13 +10,8 @@ const Manager = () => {
             passwordRef.current.type = showPwd ? "password" : "text";
         }
     }
-    
-
-
-
-
     const savePassword = () => {
-        
+
         setpasswordArray([...password, form]);
         localStorage.setItem("passwords", JSON.stringify([...password, form]))
         console.log([...password, form]);
@@ -39,7 +34,7 @@ const Manager = () => {
 
     return (
         <>
-            <div className="absolute inset-0 -z-10 h-full w-full bg-green-100 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
+            <div className="absolute inset-0 -z-10 h-screen w-full bg-green-100 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"><div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]"></div></div>
             <div className=" mx-auto bg-slate-450 mycontainer shadow-lg w-180 h-50">
                 <div className='text-black flex flex-col p-4 justify-between'>
                     <h1 className='text-center'><span className='text-green-500 font-bold text-3xl '>&lt;PassOP&gt;</span></h1>
@@ -60,45 +55,67 @@ const Manager = () => {
                             <span className='absolute inset-y-0 right-2 flex items-center cursor-pointer ' onClick={showPassword}>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-500 hover:text-black">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12s-3.75 6.75-9.75 6.75S2.25 12 2.25 12z" />
-                                    <circle cx="12" cy="12" r="3"/>
+                                    <circle cx="12" cy="12" r="3" />
                                 </svg>
                             </span>
                         </div>
                     </div>
                     <div className='flex flex-col items-center'>
-                        <button className='bg-green-500 text-white rounded-full mt-3 px-4 w-35 hover:bg-green-600 cursor-pointer' onClick={savePassword}>add password</button>
+                        <button className='bg-green-500 text-white rounded-full mt-3 px-4 w-35 hover:bg-green-600 cursor-pointer' onClick={savePassword}>save password</button>
                     </div>
                 </div>
                 <div className="passwords m-3">
                     <h2 className='font-bold py-1.5 '>your passwords</h2>
                     {password.length === 0 && <div className='text-center'>no password to show</div>}
                     {password.length !== 0 && <div>
-                    <table className="table-auto w-full overflow-hidden rounded-md ">
-                        <thead className=' bg-green-700 text-white'>
-                            <tr className='border-white'>
-                                <th className='py-1'>Site</th>
-                                <th>username</th>
-                                <th>password</th>
-                            </tr>
-                        </thead>
-                        <tbody className='bg-[#BCF0DA]'>
-                            {password.map((item, idx) => (
-                                <tr key={item.id || idx}>
-                                    <td className='text-center'>
-                                        <a href={item.site} target="_blank" className="text-blue-600 hover:underline">{item.site}</a>
-                                    </td>
-                                    <td className='text-center'>{item.username}</td>
-                                    <td className='text-center'>{item.password}</td>
+                        <table className="table-auto w-full overflow-hidden rounded-md ">
+                            <thead className=' bg-green-700 text-white'>
+                                <tr className='border-white'>
+                                    <th className='py-1'>Site</th>
+                                    <th>username</th>
+                                    <th>password</th>
+                                    <th>actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    </div>}
-                    </div>
-                    
+                            </thead>
+                            <tbody className='bg-[#BCF0DA]'>
+                                {password.map((item, idx) => (
+                                    <tr key={item.id || idx}>
+                                        <td className='text-center'>
+                                            <a href={item.site} target="_blank" className="text-black-600 hover:underline">{item.site}</a>
 
+                                        </td>
+                                        <td className='text-center'>{item.username}</td>
+                                        <td className='text-center'>{item.password}</td>
+                                        <td className='text-center'>
+                                            <span className="flex items-center justify-center gap-2">
+                                                <button
+                                                    
+                                                    className="material-symbols-outlined text-black-600 hover:text-blue-800 align-middle"
+                                                    style={{
+                                                        fontSize: "20px", 
+                                                        background: "none",
+                                                        border: "none",
+                                                        cursor: "pointer",
+                                                    }}
+                                                >
+                                                    edit
+                                                </button>
+
+                                                <button title="Delete" className="material-symbols-outlined text-red-600 hover:text-red-800 align-middle" style={{ fontSize: "20px", background: "none", border: "none", cursor: "pointer" }}>
+                                                    delete
+                                                </button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>}
                 </div>
-            
+
+
+            </div>
+
         </>
     )
 
