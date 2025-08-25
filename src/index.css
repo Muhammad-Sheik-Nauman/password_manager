@@ -2,3 +2,22 @@
 
 
 
+:root {
+  --primary: #22c55e; 
+  --secondary: #1e293b;
+  --text: #000000;
+  --background: #ffffff;
+  --font-size: 16px;
+}
+
+[data-theme="dark"] {
+  --primary: #3b82f6;
+  --secondary: #111827;
+  --text: #ffffff;
+  --background: #1f2937;
+  --font-size: 16px;
+}
+
+body {
+  font-size: var(--font-size);
+}

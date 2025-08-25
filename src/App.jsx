@@ -1,21 +1,20 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import './App.css' 
-import Manager from './components/Manager' 
-import Footer from './components/Footer'
+import React from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Manager from "./components/Manager";
+import Settings from "./components/Settings";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <Navbar/>
-      <div className='min-h-[79vh]'><Manager/></div>
-      
-      <Footer /> 
-      
+      <Navbar />
+      <Settings />
+      <div className="min-h-screen flex flex-col justify-between">
+        <Manager />
+        <Footer />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
