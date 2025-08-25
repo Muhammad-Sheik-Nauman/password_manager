@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Navbar = () => {
+const Navbar = ({ onCustomize }) => {
   return (
     <nav 
       className="h-12 flex justify-between items-center px-6 shadow"
@@ -9,11 +9,14 @@ const Navbar = () => {
       <div className="logo font-bold" style={{ color: "var(--primary)" }}>
         &lt;PassOP&gt;
       </div>
-      <ul className='flex gap-6'>
-        <a className='hover:underline' href="#">Home</a>
-        <a className='hover:underline' href="#">About</a>
-        <a className='hover:underline' href="#">Contact</a>
-      </ul>
+      <div className='flex items-center'>
+        <button
+          className="ml-4 px-3 py-1 rounded bg-[var(--primary)] text-white hover:bg-opacity-80 transition"
+          onClick={onCustomize}
+        >
+          Customize
+        </button>
+      </div>
     </nav>
   )
 }

@@ -24,9 +24,16 @@ const Settings = () => {
   }, [fontSize]);
 
   return (
-    <div className="fixed top-3 right-3 p-3 bg-gray-200 rounded-lg shadow z-50">
-   
-      <div className="mb-2">
+    <div className="fixed top-3 right-3 p-3 bg-gray-200 rounded-lg shadow z-50 min-w-[220px]">
+      <button
+        className="absolute top-1 right-2 text-xl text-gray-500 hover:text-gray-800 font-bold"
+        style={{lineHeight:1}}
+        onClick={() => typeof window.closeSettings === 'function' && window.closeSettings()}
+        aria-label="Close"
+      >
+        ×
+      </button>
+      <div className="mb-2 mt-2">
         <label className="mr-2 font-semibold">Theme:</label>
         <select
           value={theme}
